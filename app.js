@@ -21,7 +21,6 @@ app.use(cookieParser())
 //acá activamos nuestras rutas pasandole a nuestra constante app por parametros la ruta general y el enrutador
 
 
-
 //dejamos al servidor en escucha pasandole por parametros el puerto (variable de entorno) y una función asíncrona que ejecuta la función que activa nuestra bd junto con un mensaje de éxito
 app.listen(process.env.PORT, async () => {
     await rundb()
