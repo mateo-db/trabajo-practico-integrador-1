@@ -162,7 +162,7 @@ export const updateArticleById = async (req, res) => {
 //DELETE /api/articles/:id → Eliminación lógica (solo autor o admin).
 export const deleteArticleById = async (req, res) => {
     try {
-        const articleToDelId = matchedData(req, {locations: ["body"]})
+        const articleToDelId = matchedData(req, {locations: ["params"]})
         await Article.destroy({
             where: {id: articleToDelId}
         })
