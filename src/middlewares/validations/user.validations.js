@@ -61,7 +61,7 @@ export const updateUserByIdValidations = [
     .isIn(["user", "admin"]).withMessage("Unicos roles aceptados son user o admin")
 ]
 
-export const deleteUserByIdLogically = [
+export const deleteUserByIdValidations = [
     param("id")
     .isInt({ gt: 0 }).withMessage("El id debe ser un numero entero")
     .custom( async (id) => {
