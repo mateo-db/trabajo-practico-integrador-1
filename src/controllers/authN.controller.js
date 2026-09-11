@@ -7,14 +7,14 @@ import { generateToken } from "../helpers/jwt.helper.js";
 //función asíncrona que registrara al usuario y creará su perfil al mismo tiempo
 export const register = async (req, res) => {
     try {
-        const { username, email, password, role } = matchedData(req, {locations: ["body"]})
+        const { username, email, password } = matchedData(req, {locations: ["body"]})
         const { first_name, last_name, biography, avatar_url, birth_date } = matchedData(req, {locations: ["body"]})
         const hashedPassword = hashPassword(password)
         const newUser = await User.create({
             username,
             email,
             password: hashedPassword,
-            role
+            role: "user"
         })
         const newUserProfile = await Profile.create({
             user_id: newUser.id,
