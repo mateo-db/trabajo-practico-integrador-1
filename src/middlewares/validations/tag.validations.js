@@ -29,3 +29,13 @@ export const getTagByIdValidations = [
     param("id")
     .notEmpty().isInt({gt: 0}).withMessage("El id de la etiqueta debe ser un numero entero positivo")
 ]
+
+export const deleteTagByIdValidations = [
+    param("id")
+    .custom(async (id) => {
+        const doesTagExist = await Tag.findByPk(id)
+        if (!doesTagExist) {
+            throw new Error("La etiqueta a eliminar no existe en la base de datos")
+        }
+    })
+]
