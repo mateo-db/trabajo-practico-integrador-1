@@ -11,7 +11,8 @@ export const setupRelations = () => {
     //los aliases dependen de desde que modelo esté mirando al otro y la palabra que mejor describa la relación que mantiene el modelo "observado" con respecto al modelo "observador"
     User.hasOne(Profile, {
         foreignKey: "user_id",
-        as: "profile" // en este caso, estamos parados en el modelo "User" mirando hacia el modelo "Profile", entonces nos hacemos la pregunta, "¿que representa el modelo observado "Profile" para el observador "User"?" o "¿cual es la relación del modelo "Profile" con respecto a "User"?, la respuesta en ambos casos es "perfil", de ahí el alias que colocamos en esta dirección de la relación
+        as: "profile", // en este caso, estamos parados en el modelo "User" mirando hacia el modelo "Profile", entonces nos hacemos la pregunta, "¿que representa el modelo observado "Profile" para el observador "User"?" o "¿cual es la relación del modelo "Profile" con respecto a "User"?, la respuesta en ambos casos es "perfil", de ahí el alias que colocamos en esta dirección de la relación
+        onDelete: "CASCADE"
     });
     Profile.belongsTo(User, {
         foreignKey: "user_id",
