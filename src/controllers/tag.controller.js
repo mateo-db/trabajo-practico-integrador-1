@@ -87,10 +87,9 @@ export const updateTagById = async (req, res) => {
 //funcion que elimina etiqueta especifico
 export const deleteTagById = async (req, res) => {
     try {
-        const tagToDel = matchedData(req, {locations: ["params"]})
-        const tagFound = await User.findByPk(id)
+        const tagToDelId = matchedData(req, {locations: ["params"]})
         await User.destroy({
-            where: { id: userFound.id }
+            where: {tagToDelId}
         })
         return res.status(200).json({
             message: "Se eliminó al usuario con éxito"
