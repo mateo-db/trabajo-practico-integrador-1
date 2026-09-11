@@ -134,3 +134,38 @@ export const deleteUserById = async (req, res) => {
         })
     }
 }
+
+export const createUserOnlyAdmin = async (req, res) => {
+    try {
+        const { username, email, password } = matchedData(req, {locations: ["body"]})
+        const { first_name, last_name, biography, avatar_url, birth_date } = matchedData(req, {locations: ["body"]})
+        const hashedPassword = hashPassword(password)
+        const newUser = await User.create({
+            username,
+            email,
+            password: hashedPassword,
+            role
+        })
+        const newUserProfile = await Profile.create({
+            user_id: newUser.id,
+            first_name,
+            last_name,
+            biography,
+            avatar_url,
+            birth_date
+        })
+        
+        return res.status(201).json({
+            message: "Se creó el usuario y su perfil con éxito: ",
+            newUser,
+            newUserProfile
+        })
+    } catch (error) {
+        console.error(error)
+        return res.status(500).json({
+            message: "Ocurrió un error interno en el servidor",
+        })
+    }
+}
+
+
