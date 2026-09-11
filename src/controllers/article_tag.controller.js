@@ -1,7 +1,6 @@
 import { matchedData } from "express-validator";
 import { ArticleTag } from "../models/article_tag.model.js";
 import { Tag } from "../models/tag.model.js";
-import { Article } from "../models/article.model.js";
 
 export const addTagToArticle = async (req, res) => {
     try {
@@ -33,7 +32,7 @@ export const delTagFromArticle = async (req, res) => {
     try {
         const { articleTagId } = matchedData(req, {locations: ["params"]})
         await ArticleTag.destroy({
-            where: {id: doesArticleTagExist.id}
+            where: {id: articleTagId}
         })
         return res.status(200).json({
             message: "Se eliminó la etiqueta del árticulo con éxito"
