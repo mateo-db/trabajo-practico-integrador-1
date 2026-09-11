@@ -5,6 +5,11 @@ export const areTheyOwner = async (req, res, next) => {
         const userSessId = req.userData.user_id
         const articleId = req.params.id
         const articleFound = await Article.findByPk(articleId)
+        if (!articleFound) {
+            return res.status(404).json({
+                message: "Ese árticulo no existe en la base de datos"
+            })
+        }
         const articleUserId = articleFound.user_id
 
         if ((req.userData.role !== "admin") && (articleUserId !== userSessId)) {
