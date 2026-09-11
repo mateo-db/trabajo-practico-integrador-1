@@ -1,9 +1,9 @@
 import { Router } from "express";
-import { authentication } from "../middlewares/authMiddleware";
-import { createArticleValidations, getArticleByIdValidations, updateArticleValidations } from "../middlewares/validations/article.validations";
-import { checkValidationsResult } from "../middlewares/validationResult.middleware";
-import { createArticle, deleteArticleById, getAllPublishedArticles, getArticleById, getUserArticleById, getUserPublishedArticles, updateArticleById } from "../controllers/article.controller";
-import { areTheyOwner } from "../middlewares/ownerMiddleware";
+import { authentication } from "../middlewares/authMiddleware.js";
+import { createArticleValidations, getArticleByIdValidations, updateArticleValidations } from "../middlewares/validations/article.validations.js";
+import { checkValidationsResult } from "../middlewares/validationResult.middleware.js";
+import { createArticle, deleteArticleById, getAllPublishedArticles, getArticleById, getUserArticleById, getUserPublishedArticles, updateArticleById } from "../controllers/article.controller.js";
+import { areTheyOwner } from "../middlewares/ownerMiddleware.js";
 
 export const articleRoutes = Router()
 
