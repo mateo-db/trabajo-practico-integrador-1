@@ -1,4 +1,5 @@
 import { User } from "../models/user.model.js";
+import { Profile } from "../models/profile.model.js";
 import { matchedData } from "express-validator";
 import { hashPassword } from "../helpers/bcript.helper.js";
 import { comparePassword } from "../helpers/bcript.helper.js";
@@ -9,7 +10,7 @@ export const register = async (req, res) => {
     try {
         const { username, email, password } = matchedData(req, {locations: ["body"]})
         const { first_name, last_name, biography, avatar_url, birth_date } = matchedData(req, {locations: ["body"]})
-        const hashedPassword = hashPassword(password)
+        const hashedPassword = await hashPassword(password)
         const newUser = await User.create({
             username,
             email,
@@ -65,7 +66,6 @@ export const login = async (req, res) => {
         const payload = {
             user_id: registeredUser.id,
             user_role: registeredUser.role,
-            exp: "1h"
         }
         //generamos token con helper
         const token = generateToken(payload)
