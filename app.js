@@ -1,7 +1,6 @@
 //importamos librerías y herramientas para trabajar con el servidor
 import express from 'express'
 import cookieParser from 'cookie-parser'
-import 'dotenv/config'
 import cors from 'cors'
 import { userRoutes } from './src/routes/user.routes.js'
 import { tagRoutes } from './src/routes/tag.routes.js'

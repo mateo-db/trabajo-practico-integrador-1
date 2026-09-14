@@ -69,7 +69,7 @@ export const login = async (req, res) => {
         }
         //generamos token con helper
         const token = generateToken(payload)
-        
+        //console.log(token)
         //guardamos token generado dentro de la cookie
         res.cookie("sessionToken", token, {
             httpOnly: true, //para que no se pueda accedar desde JS (DOM)

@@ -12,11 +12,14 @@ export const generateToken = (payload) => {
     }
 };
 
+
 // verificamos token
 export const verifyToken = (token) => {
     try {
+        console.log(token)
         return jwt.verify(token, process.env.JWT_SECRET);
     } catch (error) {
+        console.error("EL ERROR REAL DE JWT ES:", error)
         throw new Error("Error verificando el token: " + error.message);
     }
 };

@@ -19,6 +19,7 @@ export const rundb = async () => {
         //alter: true modifica columnas existentes
         //por defecto, el método sync() solo crea tablas si no existen
         await sequelize.sync( {force: false})
+        console.log("Conexión a la BD exitosa")
     } catch(error) {
         console.error("Ocurrió un error al conectar a la base de datos: ", error)
     }
