@@ -88,7 +88,7 @@ export const login = async (req, res) => {
 }
 
 //funcion para cerrar sesión (limpiar la cookie)
-export const logout = (res) => {
+export const logout = (req, res) => {
     try {
         res.clearCookie("sessionToken")
         return res.status(200).json({
