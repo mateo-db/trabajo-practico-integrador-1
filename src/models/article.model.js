@@ -26,6 +26,6 @@ export const Article = sequelize.define("Article", {
             model: "Users",
             key: "id",
         },
-    },
+    }},{
     timestamps: true,
 });

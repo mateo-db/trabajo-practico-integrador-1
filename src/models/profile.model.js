@@ -30,6 +30,6 @@ export const Profile = sequelize.define("Profile", {
     },
     birth_date: {
         type: DataTypes.DATE,
-    },
+    }},{
     timestamps: true,
 });

@@ -21,8 +21,9 @@ export const User = sequelize.define("User", {
         type: DataTypes.STRING(255),
     },
     role: {
-        type: DataTypes.ENUM("user", "admin", {default: "user"})
-    },
-    timestamps: true,
-    paranoid: true
-});
+        type: DataTypes.ENUM("user", "admin"),
+        defaultValue: "user"
+    }}, {
+        timestamps: true,
+        paranoid: true
+    });

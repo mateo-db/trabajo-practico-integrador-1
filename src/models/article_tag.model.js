@@ -25,6 +25,6 @@ export const ArticleTag = sequelize.define("ArticleTag", {
             model: "Tags",
             key: "id",
         },
-    },
+    }},{
     timestamps: true,
 });

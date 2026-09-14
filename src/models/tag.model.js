@@ -9,6 +9,7 @@ export const Tag = sequelize.define("Article", {
     },
     name: {
         type: DataTypes.STRING(30),
-    },
-    timestamps: true,
-});
+    }},{
+        timestamps: true,
+    }
+);
