@@ -2,12 +2,14 @@
 import express from 'express'
 import cookieParser from 'cookie-parser'
 import 'dotenv/config'
+import cors from 'cors'
 import { userRoutes } from './src/routes/user.routes.js'
 import { tagRoutes } from './src/routes/tag.routes.js'
 import { authenRouter } from './src/routes/auth.routes.js'
 import { articleRoutes } from './src/routes/article.routes.js'
 import { articleTagRoutes } from './src/routes/article_tag.routes.js'
 import { setupRelations } from './src/models/relations.js'
+import { rundb } from './src/config/database.js'
 
 //guardamos instancia activa de express en memoria como constante "app"
 const app = express()
