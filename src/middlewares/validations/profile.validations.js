@@ -2,9 +2,11 @@ import { body } from "express-validator";
 
 export const updateProfileValidations = [
     body("first_name")
+    .optional()
     .isLength({ min: 2, max: 50}).withMessage("El primer nombre debe contener entre 2 y 50 caracteres")
     .isAlpha("es-ES").withMessage("El primer nombre debe contener solo letras"), //para verificar que contenga solo letras y acepte tildes/ñ
     body("last_name")
+    .optional()
     .isLength({ min: 2, max: 50}).withMessage("El segundo nombre debe contener entre 2 y 50 caracteres")
     .isAlpha("es-ES").withMessage("El segundo nombre debe contener solo letras"),
     body("biography")

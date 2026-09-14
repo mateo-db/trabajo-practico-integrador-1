@@ -1,4 +1,5 @@
 import { Profile } from "../models/profile.model.js";
+import { matchedData } from "express-validator";
 
 export const getUserProfile = async (req, res) => {
     try {
