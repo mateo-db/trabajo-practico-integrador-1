@@ -20,4 +20,4 @@ authenRouter.get('/auth/profile', authentication, getUserProfile)
 //actualizar perfil del usuario autenticado
 authenRouter.put('/auth/profile', authentication, updateProfileValidations, checkValidationsResult, updateUserProfile)
 //endpoint para cerrar sesión 
-authenRouter.post('/logout', authentication, logout)
+authenRouter.post('/auth/logout', logout)
