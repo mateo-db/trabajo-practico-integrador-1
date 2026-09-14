@@ -56,5 +56,5 @@ export const loginValidations = [
     .isEmail().withMessage("El email debe ser de un formato válido (ejemplo: ag1144@gmail.com")
     .isLength({ max: 100 }).withMessage("El email no puede contener más de 100 caracteres"),
     body("password")
-    .isEmpty().withMessage("La contraseña no puede ser vacía")
+    .notEmpty().withMessage("La contraseña no puede ser vacía")
 ]
