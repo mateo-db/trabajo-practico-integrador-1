@@ -18,6 +18,7 @@ articleRoutes.get('/articles/:id', authentication, getArticleByIdValidations, ch
 //Actualizar artículo (solo autor o admin).
 articleRoutes.put('/articles/:id', authentication, areTheyOwner, updateArticleValidations, checkValidationsResult, updateArticleById)
 //Eliminar articulo (solo autor o admin)
-articleRoutes.delete('/articles/:id', authentication, areTheyOwner, deleteArticleById)
+articleRoutes.delete('/articles/:id', authentication, areTheyOwner, getArticleByIdValidations, checkValidationsResult, deleteArticleById)
 //Obtener artículo del usuario logueado por su id.(usuario autenticado)
-articleRoutes.get('/articles/user/:id', authentication, getUserArticleById)
+articleRoutes.get('/articles/user/:id', authentication, getArticleByIdValidations, checkValidationsResult, getUserArticleById)
+//acá el middleware de validacion getArticleById sirve igual para este endpoint ya que el user ya se sabe quien es gracias al token
