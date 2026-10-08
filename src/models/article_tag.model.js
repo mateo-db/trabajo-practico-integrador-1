@@ -12,7 +12,6 @@ export const ArticleTag = sequelize.define("ArticleTag", {
     },
     article_id: {
         type: DataTypes.INTEGER,
-        unique: true,
         references: {
             model: "Articles",
             key: "id",
@@ -20,7 +19,6 @@ export const ArticleTag = sequelize.define("ArticleTag", {
     },
     tag_id: {
         type: DataTypes.INTEGER,
-        unique: true,
         references: {
             model: "Tags",
             key: "id",

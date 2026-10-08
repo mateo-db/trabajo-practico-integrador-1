@@ -8,6 +8,6 @@ import { addTagToArticle, delTagFromArticle } from "../controllers/article_tag.c
 export const articleTagRoutes = Router()
 
 //agregar etiqueta a articulo (solo autor)
-articleTagRoutes.post('/article-tags', authentication, areTheyOwner, associateTagWithArticleValidations, checkValidationsResult, addTagToArticle)
+articleTagRoutes.post('/articles-tags', authentication, areTheyOwner, associateTagWithArticleValidations, checkValidationsResult, addTagToArticle)
 //remover etiqueta de articulo (solo autor)
-articleTagRoutes.delete('/article-tags/:articleTagId', authentication, areTheyOwner, deleteArticleTagValidations, checkValidationsResult, delTagFromArticle)
+articleTagRoutes.delete('/articles-tags/:articleTagId', authentication, areTheyOwner, deleteArticleTagValidations, checkValidationsResult, delTagFromArticle)

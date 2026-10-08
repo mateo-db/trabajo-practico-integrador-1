@@ -5,13 +5,13 @@ import { Tag } from "../models/tag.model.js";
 export const addTagToArticle = async (req, res) => {
     try {
         const { name, article_id, tag_id } = matchedData(req, {locations: ["body"]})
-        const doesTagExist = Tag.findByPk(tag_id)
+        const doesTagExist = await Tag.findByPk(tag_id)
         if (!doesTagExist) {
             return res.status(404).json({
                 message: "Esa etiqueta a asociar no existe en la base de datos"
             })
         }
-        const newArticleTag = ArticleTag.create({
+        const newArticleTag = await ArticleTag.create({
             name,
             article_id,
             tag_id

@@ -24,7 +24,7 @@ export const updateUserProfile = async (req, res) => {
     try {
         const loggedUserId = req.userData.user_id
         const { first_name, last_name, biography, avatar_url, birth_date } = matchedData(req, {locations: ["body"]})
-        const profileUpdate = Profile.update({
+        const profileUpdate = await Profile.update({
             first_name,
             last_name,
             biography,

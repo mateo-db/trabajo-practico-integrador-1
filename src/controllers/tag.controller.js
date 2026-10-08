@@ -89,7 +89,7 @@ export const deleteTagById = async (req, res) => {
     try {
         const {id} = matchedData(req, {locations: ["params"]})
         await User.destroy({
-            where: id
+            where: {id}
         })
         return res.status(200).json({
             message: "Se eliminó al usuario con éxito"
