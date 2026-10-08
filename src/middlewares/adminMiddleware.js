@@ -2,7 +2,7 @@
 
 export const adminAuth = (req, res, next) => {
     try {
-        const loggedUserRole = req.loggedUserData.user_role
+        const loggedUserRole = req.userData.user_role
     
         if (loggedUserRole !== "admin") {
             return res.status(401).json({

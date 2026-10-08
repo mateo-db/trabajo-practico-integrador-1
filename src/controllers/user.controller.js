@@ -5,7 +5,7 @@ import { matchedData } from "express-validator";
 import { hashPassword } from "../helpers/bcript.helper.js";
 
 //traer todos los usuarios
-export const getAllUsers = async (res) => {
+export const getAllUsers = async (req, res) => {
     try {
         const allUsers = await User.findAll({
             attributes: {
