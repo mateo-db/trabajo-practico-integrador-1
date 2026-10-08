@@ -42,6 +42,8 @@ export const createArticleValidations = [
 
 
 export const updateArticleValidations = [
+    param("id")
+    .isInt().withMessage("El id del árticulo tiene que ser un número entero válido"),
     body("title")
     .optional()
     .notEmpty().isString().withMessage("El titulo del articulo a crear debe ser una cadena de texto no vacía")
