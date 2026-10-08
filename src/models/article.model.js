@@ -28,4 +28,5 @@ export const Article = sequelize.define("Article", {
         },
     }},{
     timestamps: true,
+    paranoid: true
 });
