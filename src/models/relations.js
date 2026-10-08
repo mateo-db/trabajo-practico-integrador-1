@@ -38,6 +38,6 @@ export const setupRelations = () => {
         through: ArticleTag,
         foreignKey: "tag_id",
         as: "articles"
-    })
+    });
 
 };

@@ -3,7 +3,7 @@ import { Article } from "../models/article.model.js";
 import { matchedData } from "express-validator";
 
 //traer todas las etiquetas
-export const getAllTags = async (res) => {
+export const getAllTags = async (req, res) => {
     try {
         const allTags = await Tag.findAll()
         return res.status(200).json({

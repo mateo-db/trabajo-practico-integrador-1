@@ -18,7 +18,7 @@ export const rundb = async () => {
         //force: false indica que la opción de borrar las tablas y recrearlas cuando se reinicia el sv NO está activada
         //alter: true modifica columnas existentes
         //por defecto, el método sync() solo crea tablas si no existen
-        await sequelize.sync( {force: false})
+        await sequelize.sync()
         console.log("Conexión a la BD exitosa")
     } catch(error) {
         console.error("Ocurrió un error al conectar a la base de datos: ", error)

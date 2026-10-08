@@ -29,7 +29,7 @@ export const createArticle = async (req, res) => {
 
 
 //GET /api/articles → Listar artículos publicados. (usuario autenticado)
-export const getAllPublishedArticles = async (res) => {
+export const getAllPublishedArticles = async (req, res) => {
     try {
         const allPublishedArticles = await Article.findAll({
             attributes: {
