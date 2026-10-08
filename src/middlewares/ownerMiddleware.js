@@ -1,7 +1,7 @@
 import { matchedData } from "express-validator";
 import { articleModel } from "../models/article.model.js";
 
-export const ownerMiddleware = async (req, res, next) => {
+export const areTheyOwner = async (req, res, next) => {
     try {
         const {id} = matchedData(req, {locations: ["params"]})
         const article = await articleModel.findByPk(id);
