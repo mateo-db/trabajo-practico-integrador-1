@@ -17,11 +17,11 @@ export const Article = sequelize.define("Article", {
         type: DataTypes.STRING(500),
     },
     status: {
-        type: DataTypes.ENUM("published", "archived", {default: "published"}),
+        type: DataTypes.ENUM("published", "archived"),
+        defaultValue: "published"
     },
     user_id: {
         type: DataTypes.INTEGER,
-        unique: true,
         references: {
             model: "Users",
             key: "id",
