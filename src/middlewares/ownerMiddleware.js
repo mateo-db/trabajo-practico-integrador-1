@@ -1,27 +1,20 @@
-import { Article } from "../models/article.model.js";
+import { matchedData } from "express-validator";
+import { articleModel } from "../models/article.model.js";
 
-export const areTheyOwner = async (req, res, next) => {
+export const ownerMiddleware = async (req, res, next) => {
     try {
-        const userSessId = req.userData.user_id
-        const articleId = req.params.id
-        const articleFound = await Article.findByPk(articleId)
-        if (!articleFound) {
-            return res.status(404).json({
-                message: "Ese árticulo no existe en la base de datos"
-            })
-        }
-        const articleUserId = articleFound.user_id
+        const {id} = matchedData(req, {locations: ["params"]})
+        const article = await articleModel.findByPk(id);
 
-        if ((req.userData.role !== "admin") && (articleUserId !== userSessId)) {
-            return res.status(403).json({
-                message: "No autorizado"
-            })
+        if (req.userData.user_role !== "admin" && req.userData.user_id !== article.user_id) {
+            return res.status(403).json({ 
+                message: "No autorizado" 
+            });
         }
-        next()
+        next();
     } catch (error) {
-        console.error(error)
-        return res.status(500).json({
-            message: "Ocurrió un error interno en el servidor"
-        })
+        res.status(500).json({ 
+            message: "Error interno del servidor" 
+        });
     }
-}
+};
