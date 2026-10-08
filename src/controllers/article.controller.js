@@ -29,7 +29,7 @@ export const createArticle = async (req, res) => {
 
 
 //GET /api/articles → Listar artículos publicados. (usuario autenticado)
-export const getAllPublishedArticles = async (res) => {
+export const getAllPublishedArticles = async (req, res) => {
     try {
         const allPublishedArticles = await Article.findAll({
             attributes: {
@@ -55,8 +55,8 @@ export const getAllPublishedArticles = async (res) => {
 //GET /api/articles/:id → Obtener artículo por su id. (usuario autenticado)
 export const getArticleById = async (req, res) => {
     try {
-        const articleId = matchedData(req, {locations: ["params"]})
-        const articleFoundByPk = await Article.findByPk(articleId)
+        const {id} = matchedData(req, {locations: ["params"]})
+        const articleFoundByPk = await Article.findByPk(id)
         if (!articleFoundByPk) {
             return res.status(404).json({
                 message: "No se encontró ese recurso en la base de datos"
@@ -106,16 +106,16 @@ export const getUserPublishedArticles = async (req, res) => {
 export const getUserArticleById = async (req, res) => {
     try {
         const loggedUserId = req.userData.user_id
-        const articleId = matchedData(req, {locations: ["params"]})
+        const {id} = matchedData(req, {locations: ["params"]})
         const userArticleFound = await Article.findOne({
             where: {
-                id: articleId,
+                id,
                 user_id: loggedUserId
             }
         })
         return res.status(200).json({
-            message: "Árticulo encontrado: ",
-            userArticleFound
+            message: "Árticulo encontrado",
+            article: userArticleFound
         })
     } catch (error) {
         console.error(error)
@@ -130,7 +130,7 @@ export const getUserArticleById = async (req, res) => {
 //PUT /api/articles/:id → Actualizar artículo (solo autor o admin).
 export const updateArticleById = async (req, res) => {
     try {
-        const articleToUpdateId = matchedData(req, {locations: ["params"]})
+        const {id} = matchedData(req, {locations: ["params"]})
         const { title, content, excerpt, status } = matchedData(req, {locations: ["body"]})
         const articleUpdated = await Article.update(
             {
@@ -142,7 +142,7 @@ export const updateArticleById = async (req, res) => {
             {
                 where:
                 {
-                    id: articleToUpdateId
+                    id 
                 }
             }
         )
@@ -162,9 +162,9 @@ export const updateArticleById = async (req, res) => {
 //DELETE /api/articles/:id → Eliminación lógica (solo autor o admin).
 export const deleteArticleById = async (req, res) => {
     try {
-        const articleToDelId = matchedData(req, {locations: ["params"]})
+        const {id} = matchedData(req, {locations: ["params"]})
         await Article.destroy({
-            where: {id: articleToDelId}
+            where: {id}
         })
         return res.status(200).json({
             message: "Se eliminó el árticulo exitosamente"
