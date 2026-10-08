@@ -1,0 +1,103 @@
+{
+  "info": {
+    "_postman_id": "ccae2ea5-c26b-4976-8f7c-6850e9f58dd7",
+    "name": "New Collection",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "58202938"
+  },
+  "item": [
+    {
+      "name": "registro",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"username\": \"RoberGalati\",\r\n  \"email\": \"rober.galati92@gmail.com\",\r\n  \"password\": \"Robe2026Mandrake!\",\r\n  \"role\": \"user\",\r\n  \"first_name\": \"Roberto\",\r\n  \"last_name\": \"Galati\",\r\n  \"biography\": \"Soy Rober Galati, comediante, streamer y conductor. Fanático de las facturas con crema pastelera, el truco, el boliche Mandrake y creador de la frase 'es un elissir'.\",\r\n  \"avatar_url\": \"https://gstatic.com\",\r\n  \"birth_date\": \"1983-09-12\"\r\n}\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/auth/register",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "auth",
+            "register"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "login",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"email\": \"rober.galati92@gmail.com\",\r\n  \"password\": \"Robe2026Mandrake!\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/auth/login",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "auth",
+            "login"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "traer perfil",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": ""
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "actualizar perfil",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": ""
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "logout",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": ""
+        }
+      },
+      "response": []
+    }
+  ]
+}
