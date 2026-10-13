@@ -43,10 +43,13 @@ export const register = async (req, res) => {
 export const login = async (req, res) => {
     try {
         const { email, password } = matchedData(req, {locations: ["body"]})
+        console.log("Email recibido:", email);
+console.log("Contraseña recibida:", typeof password === "string");
         //buscamos si ese usuario está registrado en nuestra base de datos
         const registeredUser = await User.findOne({
             where: {email}
         })
+        console.log("Usuario encontrado:", !!registeredUser);
         //validamos: si no encontramos al usuario (es decir, si no existe ese usuario registrado), retornamos código 401 (Unauthorized) y mensaje de explicación
         if (!registeredUser) {
             return res.status(401).json({
@@ -55,6 +58,7 @@ export const login = async (req, res) => {
         }
         //llamamos a función helper que compara la contraseña en texto plano (entrante desde el body) versus la contraseña hasheada que guardamos en la base de datos al momento de registrar al usuario
         const validPassword = await comparePassword(password, registeredUser.password)
+        console.log("Contraseña coincide:", validPassword);
         //validamos: si no coinciden, retornar código 401 (Unauthorized) y mensaje de explicación
         if (!validPassword) {
             return res.status(401).json({

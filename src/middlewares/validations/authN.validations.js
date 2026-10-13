@@ -28,9 +28,7 @@ export const registerValidations = [
         }
         return true
     }),
-    body("password").isStrongPassword().withMessage("La contraseña debe contener mínimo 8 caracteres, al menos una mayúscula, minúscula y número."),
-    body("role")
-    .isIn(["user", "admin"]).withMessage("Unicos roles aceptados son user o admin"),
+    body("password").isStrongPassword().withMessage("La contraseña debe contener mínimo 8 caracteres, al menos una mayúscula, minúscula, número y símbolo."),
     body("first_name")
     .isLength({ min: 2, max: 50}).withMessage("El primer nombre debe contener entre 2 y 50 caracteres")
     .isAlpha("es-ES").withMessage("El primer nombre debe contener solo letras"), //para verificar que contenga solo letras y acepte tildes/ñ
